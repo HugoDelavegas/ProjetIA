@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+//Type de plateforme de jeu vidéo
 type Platform =
   | "PlayStation 2"
   | "Xbox"
@@ -17,7 +17,7 @@ type Platform =
   | "Xbox Series X"
   | "iOS / Android"
   | "PlayStation Portable";
-
+// Carte des jeux avec leurs informations
 interface Game {
   id: number;
   title: string;
@@ -29,7 +29,7 @@ interface Game {
   players: string;
   cover: string;
 }
-
+//Palette de couleurs pour chaque plateforme de jeu vidéo
 const PLATFORM_COLORS: Record<Platform, string> = {
   "PlayStation 2": "#0070d1",
   Xbox: "#52b043",
@@ -48,7 +48,7 @@ const PLATFORM_COLORS: Record<Platform, string> = {
   "Xbox Series X": "#107c10",
   "iOS / Android": "#ff9500",
 };
-
+// Liste des jeux vidéo avec leurs informations
 const GAMES: Game[] = [
   {
     id: 1,
@@ -76,7 +76,7 @@ const GAMES: Game[] = [
       "Explorez Liberty City librement à pied ou en véhicule. Accomplissez des missions pour les familles criminelles. Volez des voitures, fuyez la police (étoiles 1 à 6). La liberté totale de choix est au cœur du gameplay.",
     players: "1 joueur",
     cover:
-      "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&h=300&fit=crop&auto=format",
+      "https://www.rockstarmag.fr/wp-content/uploads/2021/09/jaquette-gta-3.jpg",
   },
   {
     id: 3,
@@ -90,7 +90,7 @@ const GAMES: Game[] = [
       "Explorez les environnements avec votre armure MJOLNIR. Gérez deux armes simultanément, utilisez grenades et véhicules. Affrontez les Covenants et les Flood. Le bouclier se régénère automatiquement si vous vous abritez.",
     players: "1-2 joueurs (co-op), 2-16 (multijoueur local)",
     cover:
-      "https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?w=400&h=300&fit=crop&auto=format",
+      "https://thumb.wikimedia.org/wikipedia/en/thumb/8/80/Halo_-_Combat_Evolved_%28XBox_version_-_box_art%29.jpg/250px-Halo_-_Combat_Evolved_%28XBox_version_-_box_art%29.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
   },
   {
     id: 4,
@@ -104,7 +104,7 @@ const GAMES: Game[] = [
       "Combattez en temps réel à l'épée avec Sora. Gérez vos alliés Donald et Dingo via un menu IA. Utilisez la magie (Feu, Blizzard, Tonnerre). Invocations de personnages Disney pour des attaques spéciales.",
     players: "1 joueur",
     cover:
-      "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&h=300&fit=crop&auto=format",
+      "https://m.media-amazon.com/images/M/MV5BNjA4NzVmM2ItYWMwYy00ZTRlLWIxOTYtYzE0NzU5OTAxZDEyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
   },
   {
     id: 5,
@@ -118,7 +118,7 @@ const GAMES: Game[] = [
       "Achetez armes et équipements en début de round avec votre argent. Communiquez avec votre équipe. Visez la tête pour les one-shots. Gérez l'économie sur plusieurs rounds. La mort est définitive jusqu'au prochain round.",
     players: "2-32 joueurs en ligne",
     cover:
-      "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=300&fit=crop&auto=format",
+      "https://images.g2a.com/470x276/1x1x0/counter-strike-16-pc-steam-account-global-i10000043576003/590dfe5f5bafe36b3378d122",
   },
   {
     id: 6,
@@ -131,8 +131,7 @@ const GAMES: Game[] = [
     howToPlay:
       "Créez votre personnage (race + classe). Accomplez des quêtes pour gagner de l'expérience et de l'équipement. Rejoignez une guilde pour les donjons et raids. Le level cap est atteint après des dizaines d'heures de jeu.",
     players: "Massivement multijoueur en ligne",
-    cover:
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&h=300&fit=crop&auto=format",
+    cover: "https://m.media-amazon.com/images/I/911rG3jsiTL.jpg",
   },
   {
     id: 7,
@@ -146,7 +145,7 @@ const GAMES: Game[] = [
       "Combattez avec les Lames du Chaos enchaînées à vos poignets. Exécutez des combos dévastateurs. Les QTE pour les finishers spectaculaires sur les boss. Collectez les Orbes rouges pour améliorer vos capacités.",
     players: "1 joueur",
     cover:
-      "https://images.unsplash.com/photo-1519817914152-22d216bb9170?w=400&h=300&fit=crop&auto=format",
+      "https://image.api.playstation.com/vulcan/img/rnd/202010/2217/p3pYq0QxntZQREXRVdAzmn1w.png",
   },
   {
     id: 8,
@@ -160,7 +159,7 @@ const GAMES: Game[] = [
       "Explorez librement Cyrodiil. Personnalisez votre personnage avec des compétences qui évoluent en les pratiquant. Rejoignez des guildes (Guerriers, Mages, Voleurs, Assassins). Fermez les portes d'Oblivion pour sauver l'Empire.",
     players: "1 joueur",
     cover:
-      "https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=400&h=300&fit=crop&auto=format",
+      "https://image.api.playstation.com/vulcan/ap/rnd/202504/0320/3d4ad7dd46baa8aeb93741a1a07a422f26bdff904f7b243e.jpg",
   },
   {
     id: 9,
@@ -174,7 +173,7 @@ const GAMES: Game[] = [
       "Agitez la Wiimote pour reproduire les mouvements du sport choisi. Tennis : mimez un revers ou un coup droit. Bowling : lancez physiquement la balle. La détection de mouvement fait le reste.",
     players: "1-4 joueurs",
     cover:
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&auto=format",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3X5TDvaFxhgp0fYAdaYyl90LliifcQsWD5R9W3QYcbA&s",
   },
   {
     id: 10,
@@ -188,7 +187,7 @@ const GAMES: Game[] = [
       "Combattez dans des environnements contemporains modernes. Gagnez de l'XP pour débloquer armes, perks et killstreaks (UAV, Airstrike, Hélico). Modes : TDM, Domination, Search & Destroy.",
     players: "1 joueur, 2-18 en ligne",
     cover:
-      "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400&h=300&fit=crop&auto=format",
+      "https://boulanger.scene7.com/is/image/Boulanger/5030917056284_h_f_l_0?wid=535&hei=535&resMode=sharp2&op_usm=1.75,0.3,2,0&fmt=png-alpha",
   },
   {
     id: 11,
@@ -202,7 +201,7 @@ const GAMES: Game[] = [
       "Explorez Liberty City en conduisant, en hélico ou à pied. Accomplissez missions scénarisées et activités annexes. Gérez vos relations via téléphone portable. Système de couverture en combat.",
     players: "1 joueur, 2-16 en ligne",
     cover:
-      "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&h=300&fit=crop&auto=format",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5c8cADZP29vcukWfxeVutGQdaUI5Wc0W9YFfNX2_-vA&s=10",
   },
   {
     id: 12,
@@ -216,7 +215,7 @@ const GAMES: Game[] = [
       "Mode Survie : récoltez bois, pierres, minerais. Craftez outils, armes, armures. Construisez un abri avant la nuit. Mode Créatif : ressources infinies. Combattez l'Ender Dragon pour 'finir' le jeu.",
     players: "1 joueur, jusqu'à centaines en ligne",
     cover:
-      "https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=400&h=300&fit=crop&auto=format",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwTBxN53cACjAS2nJcMBvLC0XUFyIaNBMw8ShqIfnjAA&s=10",
   },
   {
     id: 13,
@@ -230,7 +229,7 @@ const GAMES: Game[] = [
       "Explorez le Grand Ouest à cheval ou à pied. Acceptez des missions ou des quêtes secondaires. Chassez la faune sauvage, jouez au poker, affrontez au duel. Le système Dead Eye ralentit le temps pour viser.",
     players: "1 joueur, multijoueur en ligne",
     cover:
-      "https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?w=400&h=300&fit=crop&auto=format",
+      "https://www.rockstarmag.fr/wp-content/uploads/2021/09/jaquette-red-dead-redemption.jpg",
   },
   {
     id: 14,
@@ -244,7 +243,7 @@ const GAMES: Game[] = [
       "Développez votre personnage librement en pratiquant des compétences. Apprenez des Cris de Dragon. Explorez 5 grandes villes et des dizaines de donjons. Rejoignez des guildes : Compagnons, Collège, Thieves Guild.",
     players: "1 joueur",
     cover:
-      "https://images.unsplash.com/photo-1548438294-1ad5d5f4f063?w=400&h=300&fit=crop&auto=format",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVePavUFJGgl8B39s6_7nUa40abDiKXbjNhYOX6IZLnw&s",
   },
   {
     id: 15,
@@ -258,7 +257,7 @@ const GAMES: Game[] = [
       "Avancez vers la montagne. Volez grâce aux écharpes. Communiquez avec les autres joueurs uniquement par des sons musicaux. Découvrez les glyphes anciens pour la lore. Durée : ~2 heures.",
     players: "1-2 joueurs (co-op anonyme en ligne)",
     cover:
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop&auto=format",
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/638230/capsule_616x353.jpg?t=1729099361",
   },
   {
     id: 16,
@@ -272,7 +271,7 @@ const GAMES: Game[] = [
       "Gérez ressources rares (munitions, matériaux). Combattez ou contournez les Infectés et les Pillards. Craftez équipements de survie. L'IA d'Ellie participe activement au combat.",
     players: "1 joueur, multijoueur compétitif",
     cover:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&auto=format",
+      "https://m.media-amazon.com/images/M/MV5BMTE2MmQ3OTctZmExNi00ZTYxLTgzMGYtOTdlYjFjNzIxNWMxXkEyXkFqcGc@._V1_.jpg",
   },
   {
     id: 17,
@@ -286,7 +285,7 @@ const GAMES: Game[] = [
       "Explorez les niveaux interconnectés avec patience. Apprenez les patterns des ennemis. Gérez stamina en combat. Mourez, perdez vos âmes, recommencez plus fort. Coopération et invasion multijoueur.",
     players: "1 joueur, coop/invasion en ligne",
     cover:
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&h=300&fit=crop&auto=format",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1T0YyIl4dwYJktalfv416aZo-iu6Zq_lUwP13lg3Etg&s=10",
   },
   {
     id: 18,
@@ -300,7 +299,7 @@ const GAMES: Game[] = [
       "Explorez un monde ouvert immense (Velen, Novigrad, Skellige). Acceptez des contrats de monstres, résolvez des quêtes complexes. Jouez au Gwent. Préparez des potions et huiles d'alchimiste avant les combats.",
     players: "1 joueur",
     cover:
-      "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=400&h=300&fit=crop&auto=format",
+      "https://public.cdn.cdpr.app/common/news/d721f2c19dd4aa21c4f7f4939c46660d_q90_1920x1080.png",
   },
   {
     id: 19,
@@ -314,7 +313,7 @@ const GAMES: Game[] = [
       "Formez une équipe de 6 joueurs (Tank, DPS, Healer). Utilisez les ultimes au bon moment. Adaptez votre composition selon l'équipe adverse. Objectifs : capturer/défendre des points, pousser un payload.",
     players: "2-12 joueurs en ligne",
     cover:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&auto=format",
+      "https://www.nintendo.com/eu/media/images/assets/nintendo_switch_games/overwatch2/16x9_Overwatch2_Season21.jpg",
   },
   {
     id: 20,
@@ -328,7 +327,7 @@ const GAMES: Game[] = [
       "Explorez Hyrule sans limite. Résolvez les 120 sanctuaires. Cuisinez des plats pour vous soigner. Les armes se cassent — gérez votre inventaire. Affrontez Ganon quand vous vous sentez prêt.",
     players: "1 joueur",
     cover:
-      "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&h=300&fit=crop&auto=format",
+      "https://thumb.wikimedia.org/wikipedia/en/thumb/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg/250px-The_Legend_of_Zelda_Breath_of_the_Wild.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
   },
   {
     id: 21,
@@ -342,7 +341,7 @@ const GAMES: Game[] = [
       "Combattez avec la Hache Léviathan lancée/rappelée et les Lames du Chaos. Dirigez Atreus (flèches, distractions). Explorez les royaumes interconnectés. Améliorez armures et armes avec ressources craftées.",
     players: "1 joueur",
     cover:
-      "https://images.unsplash.com/photo-1519817914152-22d216bb9170?w=400&h=300&fit=crop&auto=format",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYGZvs2rnqJGNEgYlldc-YMSLTwsPwplDbf5-QHQt1pQ&s=10",
   },
   {
     id: 22,
@@ -356,7 +355,7 @@ const GAMES: Game[] = [
       "Explorez l'Amérique du début du XXe siècle à cheval. Chassez, pêchez, jouez au poker. Gérez l'honneur (Noble/Déshonorant). Votre cheval est votre partenaire — nourrissez-le et nettoyez-le.",
     players: "1 joueur, multijoueur Red Dead Online",
     cover:
-      "https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?w=400&h=300&fit=crop&auto=format",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSz5VUL0rswkka6NA8DU7n53xwnTTMr0ExasMSBKUwVsA&s=10",
   },
   {
     id: 23,
@@ -370,7 +369,7 @@ const GAMES: Game[] = [
       "Planifiez vos itinéraires et équilibrez votre charge. Gérez stamina, terrain, pluie chronogène et Échoués (BT). Construisez des routes et ziplines que les autres joueurs verront dans leur monde.",
     players: "1 joueur (monde partagé asynchrone)",
     cover:
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop&auto=format",
+      "https://upload.wikimedia.org/wikipedia/en/2/22/Death_Stranding.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
   },
   {
     id: 24,
@@ -384,7 +383,7 @@ const GAMES: Game[] = [
       "Choisissez votre build (Réflexes/Technique/Intelligence/Corps). Hackez les ennemis et l'environnement, combattez à distance ou corps à corps. Les choix de dialogue impactent le monde et la fin.",
     players: "1 joueur",
     cover:
-      "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&h=300&fit=crop&auto=format",
+      "https://store-images.s-microsoft.com/image/apps.47379.63407868131364914.bcaa868c-407e-42c2-baeb-48a3c9f29b54.89bb995b-b066-4a53-9fe4-0260ce07e894",
   },
   {
     id: 25,
@@ -398,7 +397,7 @@ const GAMES: Game[] = [
       "Évitez les patterns de balles ennemis en esquivant. Chaque mort remet les armes à zéro — seuls quelques éléments persistent. Les armes ont des traits aléatoires à découvrir. Boss monumentaux.",
     players: "1-2 joueurs (co-op en ligne)",
     cover:
-      "https://images.unsplash.com/photo-1548438294-1ad5d5f4f063?w=400&h=300&fit=crop&auto=format",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxxojjjlXvWDqKyjil493RAmclwDp7DaBgQEF5-Af-TA&s=10",
   },
   {
     id: 26,
@@ -412,7 +411,7 @@ const GAMES: Game[] = [
       "Explorez librement à cheval (Torrent). Combattez avec patience : parez, esquivez, attaquez dans les fenêtres. Construisez votre build (Force, Dextérité, Intelligence, Foi, Arcane). Co-op et invasion en ligne.",
     players: "1 joueur, co-op/invasion en ligne",
     cover:
-      "https://images.unsplash.com/photo-1534434426633-e7e4e19f8e69?w=400&h=300&fit=crop&auto=format",
+      "https://image.api.playstation.com/vulcan/img/rnd/202111/0506/hcFeWRVGHYK72uOw6Mn6f4Ms.jpg",
   },
   {
     id: 27,
@@ -425,8 +424,7 @@ const GAMES: Game[] = [
     howToPlay:
       "Amalgamez des objets pour créer véhicules, armes et solutions inédites. Explorez 3 couches : îles célestes, surface, profondeurs. La physique sandbox vous permet de résoudre chaque problème à votre façon.",
     players: "1 joueur",
-    cover:
-      "https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=400&h=300&fit=crop&auto=format",
+    cover: "https://i.ytimg.com/vi/Dv-7K_m589I/maxresdefault.jpg",
   },
   {
     id: 28,
@@ -440,7 +438,7 @@ const GAMES: Game[] = [
       "Courez, sautez, planez et utilisez les capacités offertes par chaque niveau. Le DualSense vibre et résiste selon les matériaux. Trouvez les Bots cachés pour débloquer des bonus. Boss créatifs.",
     players: "1 joueur",
     cover:
-      "https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=400&h=300&fit=crop&auto=format",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKpaFsjoBbL1-uvfx4zOnQUnmYSeOmswo6xFcq9X_4ig&s=10",
   },
   {
     id: 29,
@@ -454,7 +452,7 @@ const GAMES: Game[] = [
       "Traque les monstres dans des environnements dynamiques. Choisissez parmi 14 types d'armes radicalement différents. Récoltez matériaux sur les carcasses pour crafter armures supérieures. Coopérez à 4.",
     players: "1-4 joueurs co-op en ligne",
     cover:
-      "https://images.unsplash.com/photo-1519817914152-22d216bb9170?w=400&h=300&fit=crop&auto=format",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwYmvGiZcTYDySz8aD9xjHBwQ4c6i_tA44evi47z1YBw&s=10",
   },
   {
     id: 30,
@@ -468,19 +466,19 @@ const GAMES: Game[] = [
       "Explorez un monde ouvert générationnel avec deux protagonistes jouables. Accomplissez des missions et braquages planifiés. Conduisez, naviguez, pilotez dans une Floride fictive grouillant de vie.",
     players: "1 joueur, multijoueur en ligne",
     cover:
-      "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&h=300&fit=crop&auto=format",
+      "https://www.rockstarmag.fr/wp-content/uploads/2026/06/jaquette-grand-theft-auto-vi.jpg",
   },
 ];
-
+// Trie les jeux par année et plateforme pour les filtres
 const ALL_YEARS = [...new Set(GAMES.map((g) => g.year))].sort((a, b) => a - b);
 const ALL_PLATFORMS = [...new Set(GAMES.map((g) => g.platform))].sort();
-
+// Information pour les cartes de jeux vidéo
 type Tab = "description" | "howtoplay" | "info";
-
+//Composant pour afficher les cartes de jeux vidéo avec leurs informations et onglets
 function GameCard({ game }: { game: Game }) {
   const [activeTab, setActiveTab] = useState<Tab>("description");
   const color = PLATFORM_COLORS[game.platform];
-
+  // Rendu de la carte de jeu avec image, plateforme, genre et onglets d'information
   return (
     <div className="game-card rounded-none p-0 overflow-hidden">
       <div className="relative h-32 overflow-hidden">
@@ -539,8 +537,9 @@ function GameCard({ game }: { game: Game }) {
           {activeTab === "info" && (
             <div className="space-y-1">
               {[
+                //Information sur le jeu vidéo affichée dans l'onglet "info"
                 ["ANNÉE", game.year, "#00ff41"],
-                ["PLATFORM", game.platform, color],
+                ["PLATFORME", game.platform, color],
                 ["GENRE", game.genre, null],
                 ["JOUEURS", game.players, null],
               ].map(([label, value, col]) => (
@@ -560,7 +559,7 @@ function GameCard({ game }: { game: Game }) {
     </div>
   );
 }
-
+//Affichage par section des jeux videos par anéne
 function YearSection({ year, games }: { year: number; games: Game[] }) {
   return (
     <div className="mb-16">
@@ -582,7 +581,7 @@ function YearSection({ year, games }: { year: number; games: Game[] }) {
     </div>
   );
 }
-
+//Composant principal de l'application affichant l'ensemble des jeux vidéo avec filtres et recherche
 export default function App() {
   const [selectedPlatform, setSelectedPlatform] = useState<Platform | "all">(
     "all",
@@ -613,15 +612,15 @@ export default function App() {
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-3">
               <span className="pixel-font text-[8px] text-[#00ff41] border border-[#00ff41] px-2 py-1">
-                INSERT COIN
+                Insert Coin to play
               </span>
               <span className="neon-pink pixel-font text-[8px]">★ ★ ★</span>
             </div>
             <h1 className="pixel-font text-xl md:text-3xl neon-green leading-relaxed">
-              RETRO GAME VAULT
+              GAME VAULT
             </h1>
             <p className="crt-font text-2xl text-[#888899] cursor-blink">
-              Chronique des jeux vidéo 2000 — 2026
+              Collection de jeux vidéo 2000 — 2026
             </p>
           </div>
           <div className="flex gap-6 mt-4 flex-wrap">
@@ -631,18 +630,17 @@ export default function App() {
             </div>
             <div className="mono-font text-sm">
               <span className="text-[#888899]">ANNÉES: </span>
-              <span className="neon-cyan">
+              <span className="neon-green">
                 {ALL_YEARS[0]} – {ALL_YEARS[ALL_YEARS.length - 1]}
               </span>
             </div>
             <div className="mono-font text-sm">
               <span className="text-[#888899]">PLATEFORMES: </span>
-              <span className="neon-cyan">{ALL_PLATFORMS.length}</span>
+              <span className="neon-red">{ALL_PLATFORMS.length}</span>
             </div>
           </div>
         </div>
       </header>
-
       <div className="border-b border-[#1e1e3a] px-6 py-4 bg-[#0a0a0e]">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row gap-4">
           <div className="relative flex-1 max-w-sm">
@@ -650,6 +648,7 @@ export default function App() {
               ▶
             </span>
             <input
+              //Barre de recherche
               type="text"
               placeholder="RECHERCHER UN JEU..."
               value={searchQuery}
@@ -689,7 +688,8 @@ export default function App() {
           </div>
         </div>
       </div>
-
+      //Rendu principal de l'application avec affichage des jeux vidéo par année
+      et gestion des cas où aucun jeu ne correspond aux filtres
       <main className="max-w-7xl mx-auto px-6 py-10">
         {Object.keys(gamesByYear).length === 0 ? (
           <div className="text-center py-20">
@@ -706,7 +706,7 @@ export default function App() {
           ))
         )}
       </main>
-
+      //Pied de page avec copyright et touches de contrôle affichées
       <footer className="border-t border-[#1e1e3a] px-6 py-6 text-center">
         <p className="pixel-font text-[8px] text-[#444455]">
           © RETRO GAME VAULT — GAME OVER? INSERT COIN TO CONTINUE

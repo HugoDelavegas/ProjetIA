@@ -140,6 +140,12 @@ body::before {
     0 0 4px #ffff00,
     0 0 8px #ffff00;
 }
+.neon-red {
+  color: #ff0000;
+  text-shadow:
+    0 0 4px #ff0000,
+    0 0 8px #ff0000;
+}
 
 .pixel-font {
   font-family: "Press Start 2P", monospace;
