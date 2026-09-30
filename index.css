@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Share+Tech+Mono&display=swap");
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0f;
+  --foreground: #e0e0e0;
+  --card: #0f0f1a;
+  --card-foreground: #e0e0e0;
+  --primary: #00ff41;
+  --primary-foreground: #0a0a0f;
+  --secondary: #1a1a2e;
+  --secondary-foreground: #e0e0e0;
+  --muted: #1a1a2e;
+  --muted-foreground: #888899;
+  --accent: #ff00ff;
+  --accent-foreground: #0a0a0f;
+  --border: #1e1e3a;
+  --ring: #00ff41;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: "VT323", monospace;
+}
+
+/* Scanline overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.85;
+  }
+  94% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 0.9;
+  }
+  97% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes neon-pulse {
+  0%,
+  100% {
+    text-shadow:
+      0 0 4px #00ff41,
+      0 0 8px #00ff41,
+      0 0 16px #00ff41;
+  }
+  50% {
+    text-shadow:
+      0 0 2px #00ff41,
+      0 0 4px #00ff41,
+      0 0 8px #00ff41;
+  }
+}
+
+@keyframes neon-pulse-pink {
+  0%,
+  100% {
+    text-shadow:
+      0 0 4px #ff00ff,
+      0 0 8px #ff00ff,
+      0 0 20px #ff00ff;
+  }
+  50% {
+    text-shadow:
+      0 0 2px #ff00ff,
+      0 0 4px #ff00ff,
+      0 0 10px #ff00ff;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.neon-green {
+  color: #00ff41;
+  animation: neon-pulse 3s ease-in-out infinite;
+}
+.neon-pink {
+  color: #ff00ff;
+  animation: neon-pulse-pink 2.5s ease-in-out infinite;
+}
+.neon-cyan {
+  color: #00ffff;
+  text-shadow:
+    0 0 4px #00ffff,
+    0 0 8px #00ffff,
+    0 0 16px #00ffff;
+}
+.neon-yellow {
+  color: #ffff00;
+  text-shadow:
+    0 0 4px #ffff00,
+    0 0 8px #ffff00;
+}
+
+.pixel-font {
+  font-family: "Press Start 2P", monospace;
+}
+.crt-font {
+  font-family: "VT323", monospace;
+}
+.mono-font {
+  font-family: "Share Tech Mono", monospace;
+}
+
+.game-card {
+  border: 1px solid #1e1e3a;
+  background: #0f0f1a;
+  transition: all 0.2s ease;
+  animation: slide-in 0.4s ease;
+}
+.game-card:hover {
+  border-color: #00ff41;
+  box-shadow:
+    0 0 8px rgba(0, 255, 65, 0.2),
+    inset 0 0 8px rgba(0, 255, 65, 0.05);
+  transform: translateY(-2px);
+}
+
+.year-badge {
+  font-family: "Press Start 2P", monospace;
+  background: #00ff41;
+  color: #0a0a0f;
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 10px;
+  box-shadow: 3px 3px 0 #007a1f;
+}
+
+.platform-tag {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 12px;
+  border: 1px solid currentColor;
+  padding: 2px 8px;
+  display: inline-block;
+}
+
+.cursor-blink::after {
+  content: "_";
+  animation: blink 1s step-end infinite;
+}
+
+.timeline-line {
+  background: linear-gradient(to bottom, transparent, #00ff41, transparent);
+  width: 2px;
+}
+
+.crt-screen {
+  animation: flicker 8s infinite;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #00ff41;
+}
+
+.tab-active {
+  border-bottom: 2px solid #00ff41;
+  color: #00ff41;
+}
