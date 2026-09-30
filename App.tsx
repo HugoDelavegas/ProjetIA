@@ -487,7 +487,15 @@ function GameCard({
   const color = PLATFORM_COLORS[game.platform];
   // Rendu de la carte de jeu avec image, plateforme, genre et onglets d'information
   return (
-    <div className="game-card rounded-none p-0 overflow-hidden">
+    <div
+      className="game-card rounded-none p-0 overflow-hidden cursor-pointer"
+      onClick={(event) => {
+        if (event.target instanceof Element && event.target.closest("button")) {
+          return;
+        }
+        onSelect(game);
+      }}
+    >
       <button
         type="button"
         onClick={() => onSelect(game)}
