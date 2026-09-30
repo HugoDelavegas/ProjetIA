@@ -1,6 +1,6 @@
 type Platform =
   | "PlayStation 2"
-  | "X"
+  | "Xbox"
   | "GameCube"
   | "PC"
   | "Game Boy Advance"
