@@ -641,6 +641,7 @@ export default function App() {
           </div>
         </div>
       </header>
+
       <div className="border-b border-[#1e1e3a] px-6 py-4 bg-[#0a0a0e]">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row gap-4">
           <div className="relative flex-1 max-w-sm">
@@ -688,8 +689,7 @@ export default function App() {
           </div>
         </div>
       </div>
-      //Rendu principal de l'application avec affichage des jeux vidéo par année
-      et gestion des cas où aucun jeu ne correspond aux filtres
+
       <main className="max-w-7xl mx-auto px-6 py-10">
         {Object.keys(gamesByYear).length === 0 ? (
           <div className="text-center py-20">
@@ -706,7 +706,7 @@ export default function App() {
           ))
         )}
       </main>
-      //Pied de page avec copyright et touches de contrôle affichées
+
       <footer className="border-t border-[#1e1e3a] px-6 py-6 text-center">
         <p className="pixel-font text-[8px] text-[#444455]">
           © RETRO GAME VAULT — GAME OVER? INSERT COIN TO CONTINUE
