@@ -1,4 +1,5 @@
 import { useState } from "react";
+import GameDetailPage from "./page-detail";
 //Type de plateforme de jeu vidéo
 type Platform =
   | "PlayStation 2"
@@ -475,16 +476,27 @@ const ALL_PLATFORMS = [...new Set(GAMES.map((g) => g.platform))].sort();
 // Information pour les cartes de jeux vidéo
 type Tab = "description" | "howtoplay" | "info";
 //Composant pour afficher les cartes de jeux vidéo avec leurs informations et onglets
-function GameCard({ game }: { game: Game }) {
+function GameCard({
+  game,
+  onSelect,
+}: {
+  game: Game;
+  onSelect: (game: Game) => void;
+}) {
   const [activeTab, setActiveTab] = useState<Tab>("description");
   const color = PLATFORM_COLORS[game.platform];
   // Rendu de la carte de jeu avec image, plateforme, genre et onglets d'information
   return (
     <div className="game-card rounded-none p-0 overflow-hidden">
-      <div className="relative h-32 overflow-hidden">
+      <button
+        type="button"
+        onClick={() => onSelect(game)}
+        aria-label={`Voir la fiche de ${game.title}`}
+        className="relative block h-32 w-full cursor-pointer overflow-hidden text-left"
+      >
         <img
           src={game.cover}
-          alt={game.title}
+          alt=""
           className="w-full h-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f1a] via-transparent to-transparent" />
@@ -504,12 +516,16 @@ function GameCard({ game }: { game: Game }) {
             {game.genre}
           </span>
         </div>
-      </div>
+      </button>
 
       <div className="p-4">
-        <h3 className="pixel-font text-[10px] text-white mb-3 leading-relaxed">
+        <button
+          type="button"
+          onClick={() => onSelect(game)}
+          className="pixel-font text-left text-[10px] text-white mb-3 leading-relaxed cursor-pointer hover:text-[#00ff41]"
+        >
           {game.title}
-        </h3>
+        </button>
 
         <div className="flex gap-0 mb-3 border-b border-[#1e1e3a]">
           {(["description", "howtoplay", "info"] as Tab[]).map((tab) => (
@@ -560,7 +576,15 @@ function GameCard({ game }: { game: Game }) {
   );
 }
 //Affichage par section des jeux videos par anéne
-function YearSection({ year, games }: { year: number; games: Game[] }) {
+function YearSection({
+  year,
+  games,
+  onSelect,
+}: {
+  year: number;
+  games: Game[];
+  onSelect: (game: Game) => void;
+}) {
   return (
     <div className="mb-16">
       <div className="flex items-center gap-4 mb-6">
@@ -575,7 +599,7 @@ function YearSection({ year, games }: { year: number; games: Game[] }) {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 ml-6">
         {games.map((game) => (
-          <GameCard key={game.id} game={game} />
+          <GameCard key={game.id} game={game} onSelect={onSelect} />
         ))}
       </div>
     </div>
@@ -587,6 +611,7 @@ export default function App() {
     "all",
   );
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedGame, setSelectedGame] = useState<Game | null>(null);
 
   const filteredGames = GAMES.filter((game) => {
     const matchesPlatform =
@@ -603,6 +628,15 @@ export default function App() {
     if (yearGames.length > 0) acc[year] = yearGames;
     return acc;
   }, {});
+
+  if (selectedGame) {
+    return (
+      <GameDetailPage
+        game={selectedGame}
+        onBack={() => setSelectedGame(null)}
+      />
+    );
+  }
 
   return (
     <div className="crt-screen min-h-screen bg-[#0a0a0f]">
@@ -702,7 +736,12 @@ export default function App() {
           </div>
         ) : (
           Object.entries(gamesByYear).map(([year, games]) => (
-            <YearSection key={year} year={parseInt(year)} games={games} />
+            <YearSection
+              key={year}
+              year={parseInt(year)}
+              games={games}
+              onSelect={setSelectedGame}
+            />
           ))
         )}
       </main>
